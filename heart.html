@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>heartBeat</title>
+	<script type="text/javascript" src="jquery-3.3.1.min.js"></script>
+	<style type="text/css">
+	body{background-color: black;}
+		#heart{
+		 position: relative;
+         width: 400px;
+         height:400px;
+         background-color: ;
+         margin:100px auto; /*transform-origin: 0 100%;*/
+         transition: all 1s; /*for mouse over and out smooth effect*/
+         
+		}
+		#heart:before{
+			position: absolute;
+			width: 260px;
+			height:400px;
+			background-color: rgba(255, 99, 71, 0.5);
+			opacity:0.7;
+			content:"";
+			border-radius: 50% 50% 50% 0;
+			transform: rotate(-45deg);
+            left:20px;
+            top:-30px;
+
+		}
+		#heart:after{
+			position: absolute;
+			width: 260px;
+			height:400px;
+			background-color: rgba(255, 99, 71, 0.5);
+			opacity: 0.7;
+			content:"";
+			border-radius: 50% 50% 0 50%;
+			transform: rotate(45deg);
+			left: 120px;
+			top:-30px;
+
+		}
+		#beat{
+			position: relative; 
+			transform: scale(0.5); /*default zoom out*/
+			transition: all 0.5s ease-in-out; /*for timing zoom in-out smooth effect*/
+			} 
+	</style>
+</head>
+<body>
+<div id="beat">
+<div id="heart"></div>
+</div>
+<script type="text/javascript">
+// setInterval(function(){
+// 	$("#heart").hide();       //turn on off effect
+// 	},200);
+// setInterval(function(){
+// 	$("#heart").show();
+// 	},400);
+var scale=0.5;
+setInterval(function(){
+	scale = scale == 0.5 ? 1 : 0.5
+	$("#beat").css({transform:"scale("+scale+")",}); //icindeki css parametrler bir birinden , vergul ile ayrilir ; noqte vergul olmaz obyektin parametrleridir cunki!
+
+	console.log(scale);},500);
+
+$("#heart").mouseover(function (){
+		$(this).css({transform:'scale(1.5)', })  //mouse over zoom in effect
+	});
+	$("#heart").mouseout(function (){
+		$(this).css({transform:'scale(0.5)', })  //mouse out zoom out effect
+	});
+
+</script>
+</body>
+</html>
